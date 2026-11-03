@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Task Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Task Dashboard</h1>
+    <div class="stats" id="stats" aria-live="polite"></div>
+  </header>
+
+  <main class="layout">
+    <section class="panel form-panel" aria-labelledby="form-title">
+      <h2 id="form-title">Add a task</h2>
+      <form id="task-form" novalidate>
+        <input type="hidden" id="task-id" />
+        <label>Title
+          <input type="text" id="title" maxlength="120" placeholder="e.g. Finish API docs" required />
+        </label>
+        <label>Description
+          <textarea id="description" rows="3" maxlength="1000" placeholder="Optional details"></textarea>
+        </label>
+        <div class="row">
+          <label>Priority
+            <select id="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+          <label>Status
+            <select id="status">
+              <option value="todo" selected>To do</option>
+              <option value="in-progress">In progress</option>
+              <option value="done">Done</option>
+            </select>
+          </label>
+        </div>
+        <p class="error" id="form-error" role="alert"></p>
+        <div class="row buttons">
+          <button type="submit" class="btn primary" id="submit-btn">Add task</button>
+          <button type="button" class="btn" id="cancel-btn" hidden>Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel list-panel" aria-labelledby="list-title">
+      <div class="list-head">
+        <h2 id="list-title">Your tasks</h2>
+        <div class="filters">
+          <input type="search" id="search" placeholder="Search..." aria-label="Search tasks" />
+          <select id="filter" aria-label="Filter by status">
+            <option value="">All</option>
+            <option value="todo">To do</option>
+            <option value="in-progress">In progress</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+      </div>
+      <p class="message" id="message" aria-live="polite"></p>
+      <ul class="task-list" id="task-list"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
